@@ -22,7 +22,7 @@ public class RemoveAccountCommandHandler : IRequestHandler<RemoveAccountCommand,
         {
             return ReturnData<bool>.Fail("Account not found.");
         }
-        account.IsActive = false;
+        account.IsDeleted = true;
         _context.Accounts.Update(account);
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool>.Success(true);

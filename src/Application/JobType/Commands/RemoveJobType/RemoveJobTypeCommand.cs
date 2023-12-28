@@ -22,7 +22,7 @@ public class RemoveJobTypeCommandHandler : IRequestHandler<RemoveJobTypeCommand,
         {
             return ReturnData<bool>.Fail("Job type not found.");
         }
-        jobType.IsActive = false;
+        jobType.IsDeleted = true;
         _context.JobTypes.Update(jobType);
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool>.Success(true);

@@ -18,11 +18,14 @@ public class GetAllQueryHandler : IRequestHandler<GetAllQuery, ReturnData<List<G
 
     public async Task<ReturnData<List<GetAllResponseDto>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
     {
-        var jobTypes = await _context.JobTypes.Select(a => new GetAllResponseDto
-        {
-            Id = a.Id,
-            Name = a.Name
-        }).ToListAsync(cancellationToken);
+        var jobTypes = await _context.JobTypes
+            .Where(x => x.IsDeleted == false)
+            .Select(a => new GetAllResponseDto
+                {
+                    Id = a.Id,
+                    Name = a.Name
+                })
+            .ToListAsync(cancellationToken);
 
         return ReturnData<List<GetAllResponseDto>>.Success(jobTypes);
     }

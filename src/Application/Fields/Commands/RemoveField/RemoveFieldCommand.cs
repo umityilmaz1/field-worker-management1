@@ -19,7 +19,7 @@ public class RemoveFieldCommandHandler : IRequestHandler<RemoveFieldCommand, boo
         var field = await _context.Fields.FindAsync(request.Id);
         if (field == null)
             return false;
-        field.IsActive = false;
+        field.IsDeleted = true;
         _context.Fields.Update(field);
         await _context.SaveChangesAsync(cancellationToken);
         return true;

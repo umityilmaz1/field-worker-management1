@@ -6,7 +6,7 @@ public class GetFieldsQueryResponseDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
-
+    public bool IsDeleted { get; set; }
     private class Mapping : Profile
     {
         public Mapping()

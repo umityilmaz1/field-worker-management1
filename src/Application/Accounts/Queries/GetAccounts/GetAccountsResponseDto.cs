@@ -14,7 +14,7 @@ public class GetAccountsResponseDto
     public string Name { get; set; }
     public string Surname { get; set; }
     public bool IsAdmin { get; set; }
-
+    public bool IsDeleted { get; set; }
     private class Mapping : Profile
     {
         public Mapping()

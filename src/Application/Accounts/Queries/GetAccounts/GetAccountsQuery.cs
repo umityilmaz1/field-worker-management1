@@ -27,6 +27,7 @@ public class GetAccountsQueryHandler : IRequestHandler<GetAccountsQuery, List<Ge
     public async Task<List<GetAccountsResponseDto>> Handle(GetAccountsQuery request, CancellationToken cancellationToken)
     {
         return await _context.Accounts
+            .Where(x => x.IsDeleted == false)
             .Select(a => _mapper.Map<GetAccountsResponseDto>(a))
             .ToListAsync(cancellationToken);
     }

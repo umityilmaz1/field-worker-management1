@@ -20,6 +20,7 @@ public class GetAllFieldsQueryHandler : IRequestHandler<GetAllFieldsQuery, List<
     public async Task<List<GetFieldsQueryResponseDto>> Handle(GetAllFieldsQuery request, CancellationToken cancellationToken)
     {
         return await _context.Fields
+            .Where(x => x.IsDeleted == false)
             .Select(a => _mapper.Map<GetFieldsQueryResponseDto>(a))
             .ToListAsync(cancellationToken);
     }

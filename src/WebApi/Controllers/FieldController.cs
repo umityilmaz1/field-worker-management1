@@ -29,14 +29,14 @@ public class FieldController : ApiControllerBase
     }
 
     [HttpPut]
-    [Route("[action]/{id}")]
+    [Route("[action]/{Id}")]
     public async Task<ReturnData<bool>> RemoveField([FromRoute]RemoveFieldCommand command)
     {
         return ReturnData<bool>.Success(await Mediator.Send(command));
     }
 
     [HttpGet]
-    [Route("[action]/{id}")]
+    [Route("[action]/{Id}")]
     public async Task<ReturnData<GetFieldByIdQueryResponseDto>> GetFieldById([FromRoute]GetFieldByIdQuery query)
     {
         return ReturnData<GetFieldByIdQueryResponseDto>.Success(await Mediator.Send(query));
