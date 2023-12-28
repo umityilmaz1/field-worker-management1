@@ -5,6 +5,7 @@ using CleanArchitecture.Application.JobType.Queries.GetJobTypeById;
 using CleanArchitecture.WebApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using CleanArchitecture.Model.Commons;
+using CleanArchitecture.Application.JobType.Queries.GetAll;
 
 namespace WebApi.Controllers;
 public class JobTypeController : ApiControllerBase
@@ -35,5 +36,12 @@ public class JobTypeController : ApiControllerBase
     public async Task<ReturnData<GetJobTypeByIdQueryResponseDTO>> GetJobTypeById([FromRoute]GetJobTypeByIdQuery query)
     {
         return await Mediator.Send(query);
+    }
+
+    [HttpGet]
+    [Route("[action]")]
+    public async Task<ReturnData<List<GetAllResponseDto>>> GetAll()
+    {
+        return await Mediator.Send(new GetAllQuery());
     }
 }
