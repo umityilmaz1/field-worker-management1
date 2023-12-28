@@ -14,5 +14,6 @@ public interface IApplicationDbContext
     DbSet<Field> Fields { get; }
     DbSet<FieldCoordinate> FieldCoordinates { get; }
     DbSet<Domain.Entities.LiveLocation> LiveLocations { get; }
+    DbSet<JobAssignment> JobAssignments { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

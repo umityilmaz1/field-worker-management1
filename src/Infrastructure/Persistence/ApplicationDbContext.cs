@@ -36,6 +36,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     //public DbSet<Coordinate> Coordinates => Set<Coordinate>();
     public DbSet<FieldCoordinate> FieldCoordinates => Set<FieldCoordinate>();
     public DbSet<LiveLocation> LiveLocations => Set<LiveLocation>();
+    public DbSet<JobAssignment> JobAssignments => Set<JobAssignment>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
