@@ -32,7 +32,7 @@ public class JobAssignmentController : ApiControllerBase
     }
 
     [HttpPut]
-    [Route("[action]/{id}")]
+    [Route("[action]/{Id}")]
     public async Task<ReturnData<bool>> DeleteAssignment([FromRoute] DeleteAssignmentCommand command)
     {
         await Mediator.Send(command);
@@ -40,14 +40,14 @@ public class JobAssignmentController : ApiControllerBase
     }
 
     [HttpGet]
-    [Route("[action]/{id}")]
+    [Route("[action]/{Id}")]
     public async Task<ReturnData<GetAssignmentByIdResponseDto>> GetAssignmentById([FromRoute] GetAssignmentByIdQuery query)
     {        
         return ReturnData<GetAssignmentByIdResponseDto>.Success(Mediator.Send(query).Result.Data);
     }
 
     [HttpGet]
-    [Route("[action]/{accountId}")]
+    [Route("[action]/{AccountId}")]
     public async Task<ReturnData<List<GetAssignmentsByAccountIdResponseDto>>> GetAssignmentsByAccountId([FromRoute] GetAssignmentsByAccountIdQuery query)
     {
         return ReturnData<List<GetAssignmentsByAccountIdResponseDto>>.Success(Mediator.Send(query).Result.Data);
