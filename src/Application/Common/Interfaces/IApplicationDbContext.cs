@@ -17,5 +17,7 @@ public interface IApplicationDbContext
     DbSet<JobAssignment> JobAssignments { get; }
     DbSet<Notification> Notifications { get; }
     DbSet<NotificationReadRecord> NotificationReadRecords { get; }
+    DbSet<Message> Messages { get; }
+    DbSet<MessageReadRecord> MessageReadRecords { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

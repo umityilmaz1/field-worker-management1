@@ -39,6 +39,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<JobAssignment> JobAssignments => Set<JobAssignment>();
     public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<NotificationReadRecord> NotificationReadRecords => Set<NotificationReadRecord>();
+    public DbSet<Message> Messages => Set<Message>();
+    public DbSet<MessageReadRecord> MessageReadRecords => Set<MessageReadRecord>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
