@@ -33,6 +33,7 @@ public class SetReadedMessageCommandHandler : IRequestHandler<SetReadedMessageCo
             AccountId = request.AccountId
         };
 
+        _context.MessageReadRecords.Add(messageReadRecord);
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool?>.Success(true);
     }

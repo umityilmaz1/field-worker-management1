@@ -34,6 +34,7 @@ public class SetReadedNotificationCommandHandler : IRequestHandler<SetReadedNoti
             AccountId = request.AccountId
         };
 
+        _context.NotificationReadRecords.Add(notificationReadRecord);
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool?>.Success(true);
     }
