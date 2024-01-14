@@ -10,6 +10,7 @@ public class Account : BaseAuditableEntity
     public string EmergencyContactPhone { get; set; }
     public string BloodType { get; set; }
     public bool IsAdmin { get; set; }
+    public string Password { get; set; }
 
     public virtual ICollection<JobType> JobTypes { get; set; }
 }

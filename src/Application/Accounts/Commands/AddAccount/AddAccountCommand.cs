@@ -15,6 +15,7 @@ public record AddAccountCommand : IRequest<ReturnData<bool>>
     public string EmergencyContactPhone { get; set; }
     public string BloodType { get; set; }
     public bool IsAdmin { get; set; }
+    public string Password { get; set; }
 }
 
 public class AddAccountCommandHandler : IRequestHandler<AddAccountCommand, ReturnData<bool>>
@@ -36,7 +37,8 @@ public class AddAccountCommandHandler : IRequestHandler<AddAccountCommand, Retur
             EmergencyContact = request.EmergencyContact,
             EmergencyContactPhone = request.EmergencyContactPhone,
             BloodType = request.BloodType,
-            IsAdmin = request.IsAdmin
+            IsAdmin = request.IsAdmin,
+            Password = request.Password
         });
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool>.Success(true);
