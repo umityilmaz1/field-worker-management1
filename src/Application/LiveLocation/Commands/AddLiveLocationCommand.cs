@@ -31,7 +31,7 @@ public class AddLiveLocationCommandHandler : IRequestHandler<AddLiveLocationComm
             AccountId = request.AccountId,
             Longitude = request.Longitude,
             Latitude = request.Latitude,
-            CreatedDate = request.CreateDate
+            CreatedDate = DateTime.Now
         };
         _context.LiveLocations.Add(liveLocation);
         await _context.SaveChangesAsync(cancellationToken);

@@ -12,4 +12,6 @@ public class GetEmergencySituationsResponseDto
     public EmergencyType EmergencyType { get; set; }
     public string Description { get; set; }
     public Guid CreatedUser { get; set; }
+    public double Longitude { get; set; }
+    public double Latitude { get; set; }
 }

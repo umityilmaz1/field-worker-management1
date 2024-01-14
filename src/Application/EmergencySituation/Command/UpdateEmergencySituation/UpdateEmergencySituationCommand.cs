@@ -10,6 +10,8 @@ public record UpdateEmergencySituationCommand : IRequest<ReturnData<bool>>
     public Guid Id { get; set; }
     public EmergencyType EmergencyType { get; set; }
     public string Description { get; set; }
+    public double Longitude { get; set; }
+    public double Latitude { get; set; }
 }
 
 public class UpdateEmergencySituationCommandHandler : IRequestHandler<UpdateEmergencySituationCommand, ReturnData<bool>>
@@ -28,6 +30,8 @@ public class UpdateEmergencySituationCommandHandler : IRequestHandler<UpdateEmer
         }
         emergency.EmergencyType = request.EmergencyType;
         emergency.Description = request.Description;
+        emergency.Longitude = request.Longitude;
+        emergency.Latitude = request.Latitude;
         _context.EmergencySituations.Update(emergency);
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool>.Success(true);

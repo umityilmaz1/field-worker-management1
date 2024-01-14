@@ -9,6 +9,8 @@ public record AddEmergencySituationCommand : IRequest<ReturnData<bool>>
     public EmergencyType EmergencyType { get; set; }
     public string Description { get; set; }
     public Guid CreatedUser { get; set; }
+    public double Longitude { get; set; }
+    public double Latitude { get; set; }
 }
 
 public class AddEmergencySituationCommandHandler : IRequestHandler<AddEmergencySituationCommand, ReturnData<bool>>
@@ -25,7 +27,9 @@ public class AddEmergencySituationCommandHandler : IRequestHandler<AddEmergencyS
             EmergencyType = request.EmergencyType,
             Description = request.Description,
             CreatedUser = request.CreatedUser,
-            CreatedDate = DateTime.UtcNow
+            Longitude = request.Longitude,
+            Latitude = request.Latitude,
+            CreatedDate = DateTime.Now
         });
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool>.Success(true);
