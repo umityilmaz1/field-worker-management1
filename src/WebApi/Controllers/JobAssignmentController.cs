@@ -46,6 +46,7 @@ public class JobAssignmentController : ApiControllerBase
         return ReturnData<GetAssignmentByIdResponseDto>.Success(Mediator.Send(query).Result.Data);
     }
 
+
     [HttpGet]
     [Route("[action]/{AccountId}")]
     public async Task<ReturnData<List<GetAssignmentsByAccountIdResponseDto>>> GetAssignmentsByAccountId([FromRoute] GetAssignmentsByAccountIdQuery query)
