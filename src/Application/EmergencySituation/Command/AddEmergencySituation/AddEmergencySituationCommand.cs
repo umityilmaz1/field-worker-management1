@@ -1,0 +1,33 @@
+﻿using CleanArchitecture.Application.Common.Interfaces;
+using CleanArchitecture.Domain.Enums;
+using CleanArchitecture.Model.Commons;
+using MediatR;
+
+namespace CleanArchitecture.Application.EmergencySituation.Command.AddEmergencySituation;
+public record AddEmergencySituationCommand : IRequest<ReturnData<bool>>
+{
+    public EmergencyType EmergencyType { get; set; }
+    public string Description { get; set; }
+    public Guid CreatedUser { get; set; }
+}
+
+public class AddEmergencySituationCommandHandler : IRequestHandler<AddEmergencySituationCommand, ReturnData<bool>>
+{
+    private readonly IApplicationDbContext _context;
+    public AddEmergencySituationCommandHandler(IApplicationDbContext context)
+    {
+        _context = context;
+    }
+    public async Task<ReturnData<bool>> Handle(AddEmergencySituationCommand request, CancellationToken cancellationToken)
+    {
+        _context.EmergencySituations.Add(new Domain.Entities.EmergencySituation
+        {
+            EmergencyType = request.EmergencyType,
+            Description = request.Description,
+            CreatedUser = request.CreatedUser,
+            CreatedDate = DateTime.UtcNow
+        });
+        await _context.SaveChangesAsync(cancellationToken);
+        return ReturnData<bool>.Success(true);
+    }
+}

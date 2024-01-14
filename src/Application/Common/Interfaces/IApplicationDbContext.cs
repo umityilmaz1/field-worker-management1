@@ -19,5 +19,6 @@ public interface IApplicationDbContext
     DbSet<NotificationReadRecord> NotificationReadRecords { get; }
     DbSet<Message> Messages { get; }
     DbSet<MessageReadRecord> MessageReadRecords { get; }
+    DbSet<Domain.Entities.EmergencySituation> EmergencySituations { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

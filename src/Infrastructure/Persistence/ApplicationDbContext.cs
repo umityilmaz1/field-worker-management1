@@ -41,6 +41,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<NotificationReadRecord> NotificationReadRecords => Set<NotificationReadRecord>();
     public DbSet<Message> Messages => Set<Message>();
     public DbSet<MessageReadRecord> MessageReadRecords => Set<MessageReadRecord>();
+    public DbSet<EmergencySituation> EmergencySituations => Set<EmergencySituation>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
