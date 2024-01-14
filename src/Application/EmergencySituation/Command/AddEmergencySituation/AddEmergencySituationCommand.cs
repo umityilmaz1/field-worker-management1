@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Application.Common.Interfaces;
+using CleanArchitecture.Domain;
 using CleanArchitecture.Domain.Enums;
 using CleanArchitecture.Model.Commons;
 using MediatR;
@@ -31,6 +32,14 @@ public class AddEmergencySituationCommandHandler : IRequestHandler<AddEmergencyS
             Latitude = request.Latitude,
             CreatedDate = DateTime.Now
         });
+
+        var entity = new Domain.Entities.Notification
+        {
+            Content = request.EmergencyType.ToString() + request.Description,
+            IsEmergency = true
+        };
+        _context.Notifications.Add(entity);
+
         await _context.SaveChangesAsync(cancellationToken);
         return ReturnData<bool>.Success(true);
     }
