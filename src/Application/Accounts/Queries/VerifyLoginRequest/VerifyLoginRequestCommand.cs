@@ -22,7 +22,7 @@ public class VerifyLoginRequestCommandHandler : IRequestHandler<VerifyLoginReque
     }
     public async Task<ReturnData<Account?>> Handle(VerifyLoginRequestCommand request, CancellationToken cancellationToken)
     {
-        var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Phone == request.Phone && a.Password == request.Password & !a.IsActive && !a.IsDeleted);
+        var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Phone == request.Phone && a.Password == request.Password & a.IsActive && !a.IsDeleted);
 
         if (account == null)
         {

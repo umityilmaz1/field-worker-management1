@@ -8,11 +8,11 @@ public class LoginRequest
     public string Phone { get; set; }
     public string Password { get; set; }
 
-    private class Mapping : Profile
-    {
-        public Mapping()
-        {
-            CreateMap<LoginRequest, VerifyLoginRequestCommand>();
-        }
-    }
+    //public class Mapping : Profile
+    //{
+    //    public Mapping()
+    //    {
+    //        CreateMap<LoginRequest, VerifyLoginRequestCommand>();
+    //    }
+    //}
 }

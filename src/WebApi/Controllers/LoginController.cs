@@ -23,7 +23,7 @@ public class LoginController : ApiControllerBase
     [HttpPost]
     public async Task<ReturnData<string?>> Login([FromBody] LoginRequest loginRequest)
     {
-        var loginRequestVerified = await Mediator.Send(_mapper.Map<VerifyLoginRequestCommand>(loginRequest));
+        var loginRequestVerified = await Mediator.Send(new VerifyLoginRequestCommand { Phone = loginRequest.Phone, Password = loginRequest.Password });
 
         if (loginRequestVerified.Data == null)
         {
