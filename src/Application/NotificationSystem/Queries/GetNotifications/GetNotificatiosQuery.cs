@@ -27,7 +27,8 @@ public class GetNotificationsQueryHandler : IRequestHandler<GetNotificatiosQuery
                 NotificationId = x.Id,
                 Content = x.Content,
                 SendDate = x.CreatedDate,
-                IsRead = x.NotificationReadRecords.Any(y => y.AccountId == request.AccountId)
+                IsRead = x.NotificationReadRecords.Any(y => y.AccountId == request.AccountId),
+                IsEmergency = x.IsEmergency
             })
             .ToListAsync(cancellationToken);
 

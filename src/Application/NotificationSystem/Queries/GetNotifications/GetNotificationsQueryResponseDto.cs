@@ -5,4 +5,5 @@ public class GetNotificationsQueryResponseDto
     public string Content { get; set; }
     public DateTime SendDate { get; set; }
     public bool IsRead { get; set; }
+    public bool IsEmergency { get; set; }
 }
