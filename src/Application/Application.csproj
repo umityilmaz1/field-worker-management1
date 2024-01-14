@@ -27,6 +27,10 @@
 
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Reports\Commands\" />
+    </ItemGroup>
+
 
 
 
