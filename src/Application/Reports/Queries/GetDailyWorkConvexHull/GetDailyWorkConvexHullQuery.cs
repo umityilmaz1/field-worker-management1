@@ -33,6 +33,10 @@ public class GetDailyWorkConvexHullQueryHandler : IRequestHandler<GetDailyWorkCo
             }
 
         }
+        else
+        {
+            responseList = new();
+        }
 
         var convexHull = ConvexHullWithQuichHull.printHull(responseList, responseList.Count);
         return ReturnData<List<GetDailyWorkConvexHullQueryResponseDto>>.Success(convexHull);
