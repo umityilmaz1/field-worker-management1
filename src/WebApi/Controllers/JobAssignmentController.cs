@@ -48,7 +48,6 @@ public class JobAssignmentController : ApiControllerBase
     }
 
 
-    [Authorize]
     [HttpGet]
     [Route("[action]/{AccountId}")]
     public async Task<ReturnData<List<GetAssignmentsByAccountIdResponseDto>>> GetAssignmentsByAccountId([FromRoute] GetAssignmentsByAccountIdQuery query)
